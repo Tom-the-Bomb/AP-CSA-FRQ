@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import x.CookieOrder;
-
 class MasterOrder {
     private ArrayList<CookieOrder> orders;
 
