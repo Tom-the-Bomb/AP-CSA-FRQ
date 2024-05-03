@@ -1,0 +1,7 @@
+public class GridChecker {
+    private BoundedGrid<Actor> gr;
+
+    public Actor actorWithMostNeighbors() {
+
+    }
+}
