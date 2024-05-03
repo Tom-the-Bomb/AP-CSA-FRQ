@@ -1,0 +1,20 @@
+public class TextBook extends Book {
+    private int editionNumber;
+
+    public TextBook(String bookTitle, double bookPrice, int editionNumber) {
+        super(bookTitle, bookPrice);
+        this.editionNumber = editionNumber;
+    }
+
+    public int getEdition() {
+        return editionNumber;
+    }
+
+    public String getBookInfo() {
+        return super.getBookInfo() + "-" + editionNumber;
+    }
+
+    public boolean canSubstituteFor(TextBook other) {
+        return other.getTitle().equals(getTitle()) && other.getEdition() >= editionNumber;
+    }
+}

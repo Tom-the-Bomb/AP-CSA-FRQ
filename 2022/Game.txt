@@ -1,0 +1,35 @@
+public class Game {
+    private Level levelOne;
+    private Level levelTwo;
+    private Level levelThree;
+
+    public int getScore() {
+        int score = 0;
+
+        if (levelOne.goalReached()) {
+            score += levelOne.getPoints();
+            if (levelTwo.goalReached()) {
+                score += levelTwo.getPoints();
+                if (levelThree.goalReached()) {
+                    score += levelThree.getPoints();
+                }
+            }
+        }
+        if (isBonus()) {
+            score *= 3;
+        }
+        return score;
+    }
+
+    public int playManyTimes(int n) {
+        int maxScore = 0;
+        for (int i = 0; i < n; i++) {
+            play();
+            int score = getScore();
+            if (score > maxScore) {
+                maxScore = score;
+            }
+        }
+        return maxScore;
+    }
+}

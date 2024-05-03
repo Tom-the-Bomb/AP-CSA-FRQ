@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+public class ReviewAnalysis {
+    private Review[] allReviews;
+
+    public double getAverageRating() {
+        double total = 0;
+        for (Review review : allReviews) {
+            total += review.getRating();
+        }
+        return total / allReviews.length;
+    }
+
+    public ArrayList<String> collectComments() {
+        ArrayList<String> comments = new ArrayList<>();
+
+        for (int i = 0; i < allReviews.length; i++) {
+            String comment = review[i].getComment();
+            if (comment.indexOf('!') != -1) {
+                String lastChar = comment.subString(comment.length() - 1);
+                if (lastChar.equals("!") || !lastChar.equals(".")) {
+                    comment += ".";
+                }
+                comments.add(i + "-" + comment);
+            }
+        }
+        return comments;
+    }
+}
