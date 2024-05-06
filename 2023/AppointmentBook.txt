@@ -1,0 +1,28 @@
+
+public class AppointmentBook {
+    public int findFreeBlock(int period, int duration) {
+        int currBlock = 0;
+        for (int i = 0; i <= 59; i++) {
+            if (isMinuteFree(period, i)) {
+                currBlock++;
+                if (currBlock == duration) {
+                    return i - duration;
+                }
+            } else {
+                currBlock = 0;
+            }
+        }
+        return -1;
+    }
+
+    public boolean makeAppointment(int startPeriod, int endPeriod, int duration) {
+        for (int i = startPeriod; i <= endPeriod; i++) {
+            int block = findFreeBlock(i, duration);
+            if (block != -1) {
+                reserveBlock(i, block, duration);
+                return true;
+            }
+        }
+        return false;
+    }
+}

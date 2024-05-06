@@ -1,0 +1,35 @@
+
+public class Sign {
+    private String message;
+    private int width;
+
+    public Sign(String message, int width) {
+        this.message = message;
+        this.width = width;
+    }
+
+    public int numberOfLines() {
+        int num = message.length() / width;
+        int rem = message.length() % width;
+
+        if (rem != 0) {
+            num++;
+        }
+        return num;
+    }
+
+    public String getLines() {
+        if (message.isEmpty()) {
+            return null;
+        }
+        String message = this.message;
+
+        String output = "";
+        while (message.length() > width) {
+            output += message.substring(0, width) + ";";
+            message = message.substring(width);
+        }
+        output += message;
+        return output
+    }
+}
