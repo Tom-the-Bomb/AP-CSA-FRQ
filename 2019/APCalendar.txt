@@ -1,0 +1,30 @@
+
+public class APCalendar {
+    public static int numberOfLeapYears(int year1, int year2) {
+        int count = 0;
+
+        for (int year = year1; year <= year2; year++) {
+            if (isLeapYear(year)) {
+                count++;
+            }
+        }
+    }
+
+    public static int dayOfWeek(int month, int day, int year) {
+        int start = firstDayOfYear(year);
+        int nth = dayOfYear(month, day, year);
+
+        // subtract one as `nth` represents the n-th day of the year which is only (n - 1) days after the first
+        // (since we're adding to start)
+        start += (nth - 1) % 7;
+        return start % 7;
+    }
+
+    public static int dayOfWeek(int month, int day, int year) {
+        int start = firstDayOfYear(year);
+        int nth = dayOfYear(month, day, year);
+
+        // directly add (nth - 1)days (onto start) and mod at the end
+        return (start + nth - 1) % 7
+    }
+}

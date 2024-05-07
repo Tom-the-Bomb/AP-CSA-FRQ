@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+
+public class Delimiters {
+    public ArrayList<String> getDelimitersList(String[] tokens) {
+        ArrayList<Integer> delimiters = new ArrayList<>();
+
+        for (String token : tokens) {
+            if (token.equals(openDel) || token.equals(closeDel)) {
+                delimiters.add(token);
+            }
+        }
+        return delimiters;
+    }
+
+    public boolean isBalanced(ArrayList<String> delimiters) {
+        int count = 0;
+
+        for (String delim : delimiters) {
+            if (delim.equals(openDel)) {
+                count++;
+            } else if (delim.equals(closeDel)) {
+                count--;
+                if (count < 0) {
+                    return false;
+                }
+            }
+        }
+        return count == 0;
+    }
+}
