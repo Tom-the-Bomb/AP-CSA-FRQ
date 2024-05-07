@@ -1,0 +1,24 @@
+
+public class ClubMembers {
+    public void addMembers(String[] names, int gradYear) {
+        for (String name : names) {
+            memberList.add(new MemberInfo(name, gradYear, true));
+        }
+    }
+
+    public ArrayList<MemberInfo> removeMembers(int year) {
+        ArrayList<MemberInfo> good = new ArrayList<>();
+
+        for (int i = memberList.size() - 1; i >= 0; i--) {
+            MemberInfo member = memberList.get(i);
+
+            if (member.getGradYear() <= year) {
+                if (member.inGoodStanding()) {
+                    good.add(member);
+                }
+                memberList.remove(i);
+            }
+        }
+        return good;
+    }
+}
