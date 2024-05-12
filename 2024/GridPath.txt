@@ -1,0 +1,47 @@
+
+public class GridPath {
+    public Location getNextLoc(int row, int col) {
+        Location right = new Location(row, col + 1);
+        Location under = new Location(row + 1, col);
+
+        if (row == grid.length - 1) {
+            return right;
+        } else if (col == grid[0].length - 1) {
+            return under;
+        } else if (grid[row][col + 1] < grid[row + 1][col]) {
+            return right;
+        } else {
+            return under;
+        }
+    }
+
+    public int sumPath(int row, int col) {
+        int sum = 0;
+
+        while (true) {
+            sum += grid[row][col];
+
+            if (row == grid.length - 1 && col == grid[0].length - 1) {
+                break;
+            }
+
+            Location nextLoc = getNextLoc(row, col);
+            row = nextLoc.getRow();
+            col = nextLoc.getCol();
+        }
+        return sum;
+    }
+
+    /* OR */
+    public int sumPath(int row, int col) {
+        int sum = grid[row][col];
+
+        while (row != grid.length - 1 || col != grid[0].length - 1) {
+            Location nextLoc = getNextLoc(row, col);
+            row = nextLoc.getRow();
+            col = nextLoc.getCol();
+            sum += grid[row][col];
+        }
+        return sum;
+    }
+}

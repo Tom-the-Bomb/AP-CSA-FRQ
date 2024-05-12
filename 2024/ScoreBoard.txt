@@ -1,0 +1,40 @@
+
+public class ScoreBoard {
+    private String team1;
+    private String team2;
+
+    private int team1Score;
+    private int team2Score;
+
+    private String activeTeam;
+
+    public ScoreBoard(String team1, String team2) {
+        this.team1 = team1;
+        this.team2 = team2;
+
+        this.team1Score = 0;
+        this.team2Score = 0;
+
+        this.activeTeam = team1;
+    }
+
+    public void recordPlay(int points) {
+        if (activeTeam.equals(team1)) {
+            if (points >= 1) {
+                team1Score += points;
+            } else {
+                activeTeam = team2;
+            }
+        } else {
+            if (points >= 1) {
+                team2Score += points;
+            } else {
+                activeTeam = team1;
+            }
+        }
+    }
+
+    public String getScore() {
+        return team1Score + "-" + team2Score + "-" + activeTeam;
+    }
+}
